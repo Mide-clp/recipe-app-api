@@ -13,7 +13,7 @@ class UserManager(BaseUserManager):
     """Manager for users"""
 
     def create_user(self, email, password=None, **extra_field):
-        """ Create, save and return user. """
+        """Create, save and return user."""
 
         if not email:
             raise ValueError("User must have an email address")
@@ -24,9 +24,11 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password):
-        """ Create and return superuser"""
+        """Create and return superuser"""
 
-        return self.create_user(email, password, is_staff=True, is_superuser=True)
+        return self.create_user(
+            email, password, is_staff=True, is_superuser=True
+        )
 
 
 class User(AbstractBaseUser, PermissionsMixin):
